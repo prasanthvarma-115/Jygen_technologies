@@ -1,15 +1,207 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/about/", "destination": "/about/index.html" },
-    { "source": "/contact/", "destination": "/contact/index.html" },
-    { "source": "/services/", "destination": "/services/index.html" },
-    { "source": "/services/software/", "destination": "/services/software/index.html" },
-    { "source": "/services/digital-products/", "destination": "/services/digital-products/index.html" },
-    { "source": "/services/ai-systems/", "destination": "/services/ai-systems/index.html" },
-    { "source": "/services/automation/", "destination": "/services/automation/index.html" },
-    { "source": "/services/iot/", "destination": "/services/iot/index.html" },
-    { "source": "/services/saas/", "destination": "/services/saas/index.html" },
-    { "source": "/services/custom-systems/", "destination": "/services/custom-systems/index.html" }
-  ]
+    {
+      "source": "/about/",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/services/",
+      "destination": "/services/index.html"
+    },
+    {
+      "source": "/services/software/",
+      "destination": "/services/software/index.html"
+    },
+    {
+      "source": "/services/digital-products/",
+      "destination": "/services/digital-products/index.html"
+    },
+    {
+      "source": "/services/ai-systems/",
+      "destination": "/services/ai-systems/index.html"
+    },
+    {
+      "source": "/services/automation/",
+      "destination": "/services/automation/index.html"
+    },
+    {
+      "source": "/services/iot/",
+      "destination": "/services/iot/index.html"
+    },
+    {
+      "source": "/services/saas/",
+      "destination": "/services/saas/index.html"
+    },
+    {
+      "source": "/services/custom-systems/",
+      "destination": "/services/custom-systems/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-4tkAsgc8lkNu0PvfAvJTeT3DMBaZZwIwSvKZc5pbXdE=' 'sha256-6g6r963PKsCn2VPR1hfkKN3FjHr/rKmDXZj12mwDZGA=' 'sha256-8RpmgT2Wy1B/6DhJTqV+a0z1xzYS0iKx6y7Q8DTgRQ8=' 'sha256-CigKFoSCm3QV9DbO6GFTe1SUMSpVYPruab9UTlmRvOA=' 'sha256-DlfgmPWlSBSq4TAi+Lsu706vNOArsWMei05asBdkU04=' 'sha256-UT7duoSXffSJYLiqOl9u4kBNZVt1muTA1+d9JDCFlvU=' 'sha256-b4BdnOUWetwmOjKPUeKrHrNqV5h+0M45iG27KbAN9ZI=' 'sha256-ql8FhqI7yfPslZRSY8KIo+1upV7QIF0Vj7PREC7Iv/Q=' 'sha256-xap2J/5KiqtTuwfMVUbOBuiT1H03nd6rCRfPgtGhUOs=' 'sha256-xceMXd5ClGneQ0V/HHevu89kOEqf2LeZkWJEQek4pZw=' 'sha256-zxsgMjnDpgohNq06kPtdSuWCB0Tp3GVD+TF0DFLQFps='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; frame-src 'none'; form-action 'self'; worker-src 'none'; manifest-src 'self'"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/contact-form.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/fonts.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/loader-start.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/page-home-1.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/page-loader.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/page-loader.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/service-detail.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/site-core.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/site-typography.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/subpage.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/page-transitions.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/page-transitions.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }

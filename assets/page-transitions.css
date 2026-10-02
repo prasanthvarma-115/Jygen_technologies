@@ -1,0 +1,33 @@
+/* The same fade for page navigation and section navigation. */
+html { scroll-behavior: auto !important; }
+@view-transition { navigation: auto; }
+::view-transition-group(root) { animation-duration: .5s; }
+::view-transition-old(root) {
+  animation: jygen-page-out .5s cubic-bezier(.4, 0, .2, 1) both;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: jygen-page-in .5s cubic-bezier(.4, 0, .2, 1) both;
+  mix-blend-mode: normal;
+}
+@keyframes jygen-page-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes jygen-page-in { from { opacity: 0; } to { opacity: 1; } }
+html.jygen-transition-fallback body { transition: opacity .22s cubic-bezier(.4, 0, .2, 1); }
+html.jygen-entry-fade body { animation: jygen-page-in .45s cubic-bezier(.4, 0, .2, 1) both; }
+html.jygen-transition-fallback.jygen-page-leaving body { animation: none; opacity: .35; }
+html.jygen-section-transition body { animation: none; transition: opacity .4s cubic-bezier(.4, 0, .2, 1); }
+html.jygen-section-leaving body { opacity: 0; transition-duration: .18s; }
+/* Fully reveal the destination before its snapshot, without a second slide-up. */
+.motion-ready .jygen-section-ready .reveal,
+.motion-ready .jygen-section-ready .reveal-target {
+  opacity: 1; transform: none; transition: none; transition-delay: 0s;
+}
+html.jygen-section-transition .site-header { transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  html.jygen-transition-fallback body, html.jygen-section-transition body {
+    animation: none !important; transition: none;
+  }
+  html.jygen-transition-fallback.jygen-page-leaving body, html.jygen-section-leaving body { opacity: 1; }
+}

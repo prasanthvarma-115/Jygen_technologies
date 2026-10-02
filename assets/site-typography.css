@@ -1,5 +1,7 @@
 /* JYGEN type system: open medium-weight headings and quiet, legible body copy. */
 :root {
+  color-scheme: light;
+  color-scheme: only light;
   font-family: Manrope, Inter, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -113,6 +115,8 @@ body, button, input, select, textarea {
 .single-service .block-heading h2, .single-service .service-cta h2,
 .about-page .about-section h2, .about-page .about-cta h2 { font-weight: 500; }
 .about-page .about-hero h1 { font-size: clamp(40px,4.5vw,64px); font-weight: 500; letter-spacing: -.02em; line-height: 1.16; text-transform: none; }
+.about-page .about-hero h1 { margin-bottom: 20px; padding-bottom: .1em; line-height: 1.2; }
+.about-page .about-hero-copy { position: relative; z-index: 3; overflow: visible; }
 .about-page .founder h3, .about-page .value h3 { font-weight: 500; }
 
 @media (max-width: 760px) {
@@ -225,4 +229,418 @@ body, button, input, select, textarea {
 /* Give the mobile hero artwork a little more room above its text group. */
 @media (max-width: 760px) {
   #landing .hero-copy { margin-top: calc(clamp(325px, 60vw, 360px) + 18px); }
+}
+
+/* Final responsive refinements. Keep the approved artwork and white palette. */
+.skip-link:not(:focus) { clip-path: inset(50%); pointer-events: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid #c54814; outline-offset: 5px; }
+#services .services { padding-bottom: 0; }
+#services .services-frame { height: auto; }
+#services .service-list { display: grid; align-content: center; padding-block: 28px; }
+#services .service-item:nth-child(n) { height: auto; min-height: 108px; align-items: start; padding-block: 14px; }
+#services .service-content { padding: 0; }
+#services .service-content h2 { padding-right: 0; }
+#services .service-more { position: static; margin-top: 7px; }
+#services .service-item:not(:last-child)::after { bottom: 0; }
+#services .service-item:focus-within .service-icon { background: #fff0e8; }
+#services .service-content p { margin-top: 7px; }
+#landing .intro, #landing .impact, #landing .center-action { min-width: 0; }
+@media (min-width: 761px) and (max-width: 1080px) {
+  #landing .hero-copy { width: calc(100% - 64px); margin-inline: auto; padding-inline: 0; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: 48px; row-gap: 28px; }
+  #landing .intro { grid-column: 1; grid-row: 1; }
+  #landing .impact { grid-column: 2; grid-row: 1; width: auto; margin: 0; padding: 0; }
+  #landing .center-action { grid-column: 1 / -1; grid-row: 2; justify-self: center; margin: 0; }
+  #landing .center-action .dark-button { margin-top: 0; }
+}
+@media (max-width: 990px) {
+  .nav.open { max-height: calc(100dvh - 90px); overflow-y: auto; overscroll-behavior: contain; }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  #services .visual { aspect-ratio: 1.35; }
+}
+@media (max-width: 760px) {
+  #services .service-item:nth-child(n) { min-height: 112px; padding-block: 16px; }
+  #approach .step:not(.discover) .step-art { width: 46%; height: 66%; right: 0; top: 8%; }
+  #approach .step:not(.discover) .step-copy { right: 45%; }
+  #approach .step:not(.discover) p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+
+/* Shared finishing details and explicit form feedback. */
+::selection { background: #ffe1d0; color: #171717; }
+.subpage .contact-auth-status[data-state="info"] { color: #626262; }
+input, textarea, select { accent-color: #ed612a; }
+@media (max-width: 600px) {
+ .subpage .contact-input-box input, .subpage .contact-input-box textarea, .subpage .contact-input-box select { font-size: 16px; }
+}
+@media (hover: none) {
+ #approach .step:hover .step-art { scale: 1; }
+}
+
+/* Remove stray reference-image seams and standalone hero dividers. */
+#services .visual .reference-fallback { clip-path: inset(0 0 4% 0); }
+.subpage .intro-hero::after { border: 0; background: none; visibility: hidden; }
+#footer .footer-art::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  height: clamp(80px, 9vw, 145px);
+  background: linear-gradient(to bottom, #fff 0%, rgba(255,255,255,.92) 18%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+/* Let the contact card's shadow disappear before the footer begins. */
+.subpage .contact-auth::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: auto 0 0;
+  height: clamp(25px, 4vw, 70px);
+  background: linear-gradient(to bottom, rgba(255,255,255,0), #fff 92%);
+  pointer-events: none;
+}
+.subpage .contact-auth-form-panel { box-shadow: 0 14px 38px rgba(37,28,19,.1); }
+@media (max-width: 600px) {
+  .subpage .contact-auth::before { display: none; }
+  .subpage .contact-auth-form-panel { box-shadow: none; }
+  #footer .footer-art::before { height: 54px; }
+}
+
+/* Hero rhythm: keep the three-column composition and lower only its action. */
+@media (min-width: 1081px) {
+  #landing .center-action { margin-top: 93px; }
+}
+
+/* Align the illustration slightly lower in either artwork state. */
+#services .visual .reference-fallback { top: calc(-14.5985% + 22px); }
+#services .visual.has-art .provided-art { padding-top: 50px; padding-bottom: 10px; }
+@media (max-width: 900px) {
+  #services .visual .reference-fallback { top: calc(-14.5985% + 12px); }
+  #services .visual.has-art .provided-art { padding-top: 38px; padding-bottom: 18px; }
+}
+
+/* FAQ: more deliberate image scale, less unused space, clearer active state. */
+#faq .faq { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); min-height: 0; }
+#faq .faq-intro { justify-content: flex-start; padding: 55px 50px 54px; background: radial-gradient(ellipse at 50% 62%, #fff2eb 0%, #fffaf7 34%, #fff 75%); }
+#faq .faq-kicker { margin: 0; }
+#faq .faq-intro h2 { max-width: 510px; margin: auto; }
+#faq .faq-list { display: flex; flex-direction: column; justify-content: center; padding: 50px 0; }
+#faq .faq-item { position: relative; }
+#faq .faq-question { min-height: 96px; transition: background .25s ease, padding .25s ease; }
+#faq .faq-question[aria-expanded="true"] { background: #fffaf7; }
+#faq .faq-question[aria-expanded="true"] .faq-label { color: #e95a23; }
+#faq .faq-icon { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #e5e6e7; border-radius: 50%; background: #fff; }
+#faq .faq-icon::before, #faq .faq-icon::after { top: 14px; left: 7px; width: 14px; height: 1.5px; }
+#faq .faq-question[aria-expanded="true"] .faq-icon { border-color: #ffd8c5; background: #fff3ec; }
+#faq .faq-answer.is-open { background: #fffaf7; }
+@media (max-width: 760px) {
+  #faq .faq { display: block; }
+  #faq .faq-intro { padding: 39px 24px 28px; }
+  #faq .faq-intro h2 { width: min(100%, 345px); margin: 12px auto 0; }
+  #faq .faq-list { padding: 0 0 28px; }
+  #faq .faq-question { min-height: 84px; }
+  #faq .faq-icon { width: 27px; height: 27px; }
+  #faq .faq-icon::before, #faq .faq-icon::after { top: 12px; left: 6px; width: 13px; }
+}
+
+/* Technology introduction and its four illustrations form one complete card. */
+#about .about-grid { border-bottom: 0; }
+#capabilities .technology-frame {
+  width: min(1258px, calc(100% - 48px));
+  margin: 24px auto;
+  border: 1px dashed var(--jygen-frame-stroke);
+  border-radius: var(--jygen-frame-radius);
+  overflow: hidden;
+  background: #fff;
+  scroll-margin-top: 112px;
+}
+#capabilities .frameworks {
+  min-height: 265px;
+  padding: 70px 30px 60px;
+  text-align: center;
+  border-bottom: 1px dashed var(--jygen-frame-stroke);
+}
+#capabilities .frameworks h2 {
+  margin: 0;
+  color: #101010;
+  font-size: clamp(33px, 3.7vw, 56px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+#capabilities .frameworks p {
+  max-width: 930px;
+  margin: 17px auto 0;
+  color: #5f6064;
+  font-size: 20px;
+  line-height: 1.58;
+  letter-spacing: 0;
+}
+#capabilities .feature-grid {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+@media (max-width: 760px) {
+  #capabilities .technology-frame { width: calc(100% - 24px); }
+  #capabilities .frameworks { min-height: 0; padding: 52px 20px 48px; }
+  #capabilities .frameworks h2 { font-size: clamp(29px, 7vw, 44px); line-height: 1.13; }
+  #capabilities .frameworks p { margin-top: 20px; font-size: 16px; line-height: 1.5; }
+  #capabilities .desktop-break { display: none; }
+}
+
+/* Use the supplied transparent illustration instead of a cropped page reference. */
+#services .visual .provided-art {
+  display: block;
+  width: 94.5%;
+  height: auto;
+  left: 50%;
+  top: 51%;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  animation: jygen-services-float 8s ease-in-out infinite alternate;
+}
+@keyframes jygen-services-float {
+  from { transform: translate(-50%, calc(-50% + 3px)); }
+  to { transform: translate(-50%, calc(-50% - 5px)); }
+}
+@media (max-width: 900px) {
+  #services .visual .provided-art {
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    object-fit: contain;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #services .visual .provided-art { animation: none; }
+}
+
+/* A warm light field and restrained orange type carry through the final CTA. */
+#contact .hero {
+  background: radial-gradient(ellipse 48% 47% at 50% 48%, #ffece1 0%, #fff4ed 38%, #fff 82%);
+}
+#contact .perspective-art::before {
+  background: radial-gradient(ellipse 46% 44% at 50% 38%, rgba(255,161,112,.3), rgba(255,229,212,.18) 62%, transparent);
+}
+#contact .perspective-art svg { opacity: .68; }
+#contact .hero h2 .orange-keyword { color: #ee5e27; font-style: normal; }
+
+/* Keep the dotted dividers at the exact midpoint of their two-column cards. */
+#services .services-frame,
+#faq .faq,
+.single-service .service-hero {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 850px) {
+  .single-service .service-hero { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Service names use the same solid orange across every entry point. */
+#services .service-content h2,
+#services .service-content h2 a { color: #17191b; }
+#services .service-item:hover .service-content h2 a,
+#services .service-item:focus-within .service-content h2 a { color: #ed5e27; }
+.subpage .detail-head h2,
+.single-service .service-main h1 { color: #ed5e27; }
+
+/* Small orange labels need stronger contrast than display-sized orange type. */
+#services .service-more,
+#about .about-kicker,
+#faq .faq-kicker,
+#faq .faq-index,
+.subpage .eyebrow,
+.about-page .value .number,
+.single-service .step-copy b { color: #b9481b; }
+.single-service .crumbs { color: #62666b; }
+.single-service .crumbs a:hover { color: #b9481b; }
+
+/* The service list uses the reference's dark title and orange interaction. */
+@media (min-width: 901px) {
+  #services .service-content h2 { padding-right: 125px; }
+  #services .service-more { position: absolute; top: 16px; right: 0; margin: 0; }
+}
+
+/* Closed FAQ rows share one neutral background. */
+#faq .faq-list { padding: 0; }
+#faq .faq-item::before { display: none; }
+#faq .faq-item { background: #fff; }
+#faq .faq-item:first-child { border-top: 0; }
+#faq .faq-item:last-child { border-bottom: 0; }
+#faq .faq-question {
+  grid-template-columns: 34px minmax(0, 1fr) 38px;
+  min-height: 106px;
+  background: transparent;
+}
+#faq .faq-question:hover,
+#faq .faq-question[aria-expanded="true"],
+#faq .faq-answer.is-open { background: #fff3ec; }
+#faq .faq-icon,
+#faq .faq-question[aria-expanded="true"] .faq-icon {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+#faq .faq-icon::before,
+#faq .faq-icon::after { top: 14px; left: 3px; width: 24px; height: 2px; background: #17191b; }
+#faq .faq-question[aria-expanded="true"] .faq-icon::before,
+#faq .faq-question[aria-expanded="true"] .faq-icon::after { background: #b9481b; }
+
+/* Center service information while keeping each text line readable. */
+.subpage .service-detail .detail-head,
+.subpage .service-detail .detail-columns > div,
+.subpage .service-detail .example-card { text-align: center; }
+.subpage .service-detail .detail-head .eyebrow { justify-content: center; }
+.subpage .service-detail .detail-head p,
+.subpage .service-detail .detail-columns p,
+.subpage .service-detail .example-card p { margin-inline: auto; }
+.subpage .service-detail .detail-columns p { max-width: 470px; }
+.subpage .service-detail .examples-label { padding-left: 0; text-align: center; }
+
+.single-service .service-hero { grid-template-columns: minmax(0, 1fr); }
+.single-service .service-main { text-align: center; }
+.single-service .service-main .eyebrow { justify-content: center; }
+.single-service .service-main .lead,
+.single-service .service-main .summary { margin-inline: auto; }
+.single-service .service-aside {
+  border-left: 0;
+  border-top: 1px dashed var(--jygen-frame-stroke);
+  padding: 30px 24px;
+  background: #fffaf7;
+}
+.single-service .aside-copy {
+  max-width: 700px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+.single-service .aside-copy p { max-width: 580px; margin-inline: auto; }
+.single-service .block-heading { display: block; text-align: center; }
+.single-service .block-heading p { max-width: 620px; margin: 14px auto 0; }
+.single-service .split > div,
+.single-service .use-case,
+.single-service .step-copy { text-align: center; }
+.single-service .split p,
+.single-service .use-case p,
+.single-service .step-copy p { max-width: 480px; margin-inline: auto; }
+.single-service .service-cta { flex-direction: column; justify-content: center; text-align: center; gap: 18px; }
+
+@media (max-width: 900px) {
+  #services .service-more { position: static; }
+}
+@media (max-width: 760px) {
+  #faq .faq-question { grid-template-columns: 24px minmax(0, 1fr) 32px; min-height: 90px; }
+  #faq .faq-icon,
+  #faq .faq-question[aria-expanded="true"] .faq-icon { width: 28px; height: 28px; }
+  #faq .faq-icon::before,
+  #faq .faq-icon::after { top: 13px; left: 3px; width: 22px; }
+}
+
+/* Keep idle rows dark; orange follows direct text hover, focus, or an open answer. */
+#faq .faq-index { color: #17191b; transition: color .22s ease; }
+@media (hover: hover) and (pointer: fine) {
+  #faq .faq-label:hover { color: #b9481b; }
+}
+#faq .faq-question:focus-visible .faq-index,
+#faq .faq-question:focus-visible .faq-label,
+#faq .faq-question[aria-expanded="true"] .faq-index,
+#faq .faq-question[aria-expanded="true"] .faq-label { color: #b9481b; }
+#faq .faq-question:focus-visible .faq-icon::before,
+#faq .faq-question:focus-visible .faq-icon::after { background: #b9481b; }
+#faq .faq-answer p { margin-top: 0; padding-top: 0; padding-bottom: 4px; line-height: 1.58; }
+
+/* The closing section arrives through a soft field, not a hard grid edge. */
+#contact { margin-top: 0; padding-top: 20px; background: linear-gradient(180deg, #fff 0%, #fffaf7 22%, #fff 68%); }
+#contact .hero { background: transparent; }
+#contact .perspective-art {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.48) 16%, #000 42%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.48) 16%, #000 42%, #000 84%, transparent 100%);
+}
+
+/* Example copy sits at the visual center of every card. */
+.subpage .service-detail .example-card,
+.single-service .use-case {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.subpage .service-detail .example-card p,
+.single-service .use-case p { max-width: 440px; }
+@media (max-width: 760px) {
+  #faq .faq-answer p { margin-bottom: 24px; }
+  #contact { padding-top: 12px; }
+}
+
+/* Center the More About Us page content consistently with Services. */
+.about-page .about-hero-body { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 32px; }
+.about-page .about-brand-art { width: min(100%, 520px); }
+.about-page .about-story-copy { width: 100%; max-width: 760px; margin-inline: auto; text-align: center; }
+.about-page .about-section { text-align: center; }
+.about-page .about-section > p { margin-inline: auto; }
+.about-page .about-section .eyebrow { justify-content: center; }
+.about-page .value { text-align: center; }
+.about-page .about-cta { flex-direction: column; justify-content: center; text-align: center; }
+
+/* Keep each FAQ question and answer on one continuous surface. */
+#faq .faq-item { background: transparent; }
+#faq .faq-item:hover,
+#faq .faq-item:has(.faq-question[aria-expanded="true"]) { background: #fff3ec; }
+#faq .faq-item .faq-question,
+#faq .faq-item .faq-question:hover,
+#faq .faq-item .faq-question[aria-expanded="true"],
+#faq .faq-item .faq-answer,
+#faq .faq-item .faq-answer.is-open { background: transparent; }
+
+/* About introduction: illustration left, copy right, as in the reference. */
+.about-page .about-hero-body { grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; justify-items:stretch; gap:clamp(34px,5vw,86px); }
+.about-page .about-brand-art { width:100%; min-height:0; }
+.about-page .about-story-copy { max-width:480px; width:100%; margin-inline:0; text-align:left; }
+@media(max-width:850px) {
+ .about-page .about-hero-body { grid-template-columns:minmax(0,1fr); justify-items:center; gap:24px; }
+ .about-page .about-brand-art { width:min(100%,520px); }
+ .about-page .about-story-copy { max-width:620px; margin-inline:auto; }
+}
+
+/* Center the stacked About introduction on small screens. */
+@media(max-width:850px) {
+ .about-page .about-story-copy { text-align:center; }
+ .about-page .about-story-copy .story-signoff { justify-content:center; }
+}
+
+/* Keep the page canvas light even when the device prefers dark mode. */
+html, body { background-color: #fff; }
+
+/* Keep the bouncing balls attached to the CTA instead of the hero bottom. */
+#landing .hero-action-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 20px;
+  min-width: 0;
+  margin-top: 93px;
+}
+#landing .hero-action-group > .center-action { margin: 0; flex: none; }
+#landing .hero-action-group .indicators {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  margin: 0;
+  transform: none;
+  flex: none;
+}
+@media (min-width: 761px) and (max-width: 1080px) {
+  #landing .hero-action-group { grid-column: 1 / -1; grid-row: 2; margin-top: 0; }
+}
+@media (max-width: 760px) {
+  #landing .hero-action-group { margin-top: 27px; align-self: center; }
 }

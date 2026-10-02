@@ -1,1 +1,9 @@
-{"name":"jygen-preview","private":true,"scripts":{"dev":"node tools/local-server.mjs","test":"node --test tests/contact.test.js"}}
+{
+  "name": "jygen-website",
+  "private": true,
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node tools/local-server.mjs",
+    "build": "node tools/build-static.mjs"
+  }
+}

@@ -1,0 +1,11 @@
+#jygen-wave-loader { position:fixed; inset:0; width:100%; height:100dvh; z-index:10000; display:none; overflow:hidden; place-items:center; background:linear-gradient(to bottom,#ffe2d9,#fff 35%,#fff 60%,#ff5729); opacity:1; will-change:opacity; transition:opacity .9s cubic-bezier(.22,1,.36,1); }
+html.jygen-opening-load #jygen-wave-loader { display:grid; }
+#jygen-wave-loader canvas { position:absolute; inset:0; width:100%; height:100%; }
+#jygen-wave-loader .brand-stack { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:25px; width:min(280px,65%); transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1); }
+#jygen-wave-loader .loading-line { width:100%; height:3px; background:#ffe3d6; overflow:hidden; border-radius:3px; }
+#jygen-wave-loader .loading-line span { display:block; width:0%; height:100%; background:#ff5729; border-radius:3px; transition:width .25s ease; }
+#jygen-wave-loader .wordmark-crop { position:relative; width:100%; aspect-ratio:1647 / 336; overflow:hidden; }
+#jygen-wave-loader img { position:absolute; width:131.876%; max-width:none; height:auto; left:-15.483%; top:-62.202%; z-index:1; }
+#jygen-wave-loader.is-complete { opacity:0; pointer-events:none; }
+#jygen-wave-loader.is-complete .brand-stack { opacity:0; transform:translateY(-6px); }
+@media(prefers-reduced-motion:reduce) { #jygen-wave-loader,#jygen-wave-loader .brand-stack,#jygen-wave-loader .loading-line span { transition:none; } #jygen-wave-loader.is-complete .brand-stack { transform:none; } }
